@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Author Form</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #9ec5fe; margin-top: 5rem; font-family: 'Book Antiqua'" class="d-flex justify-content-center">
+<div class="card text-center shadow" style="width: 30rem; background-color: #badce3">
+    <div class="card-body">
+        <h1 class="card-title">Author Form</h1>
+        <form th:action="@{/authors(id=${author.id})}" th:object="${author}" method="post">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control-md" th:field="*{name}" id="name">
+            <input class="btn-light" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+</body>
+</html>

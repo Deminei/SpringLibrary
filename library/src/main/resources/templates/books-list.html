@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books List</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #9ec5fe; margin-top: 5rem; font-family: 'Book Antiqua'" class="d-flex justify-content-center">
+<div class="card text-center shadow" style="width: 30rem; background-color: #badce3">
+    <div class="card-body">
+        <h2 class="card-title">Books List</h2>
+        <a href="/books/new" class="btn btn-outline-success" style="margin-bottom: 2rem">Add Book</a>
+        <p class="card-text">Step into our vibrant Alphabetic Alley,
+            where letters leap off the digital shelves, and stories echo
+            with endless possibilities. Navigate this delightful labyrinth of
+            literature, and let the literary magic unfurl!</p>
+        <table class="table table-light table-striped-columns">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Actions</th>
+            </tr>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author.name}"></td>
+                <td class="d-flex justify-content-center">
+                    <form th:action="@{/books/{id}/edit(id=${book.id})}" method="get">
+                        <input style="margin-right: 2px" type="submit" class="btn btn-warning" value="Edit">
+                    </form>
+                    <form th:action="@{/books/{id}/delete(id=${book.id})}" method="post">
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <div class="card-footer">
+            <a href="/authors" class="btn btn-info">See our authors</a>
+            <a href="/index.html" class="btn btn-primary">Home</a></div>
+    </div>
+</div>
+</body>
+</html>
