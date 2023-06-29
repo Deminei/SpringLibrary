@@ -12,16 +12,22 @@
         <a href="/authors/new" class="btn btn-outline-success" style="margin-bottom: 2rem">Add New Author</a>
         <p class="card-text">Step into the Scribe's Sanctuary,
             a digital canvas where our authors, the true Picasso of words,
-            color your imaginations. Delve into this creative courtyard
+            color your imagination. Delve into this creative courtyard
             and meet the wizards who weave dreams into narratives.</p>
-        <table class="table table-light table-striped-columns">
+        <table class="table table-light table-striped-columns container">
             <tr>
                 <th scope="col">Name</th>
+                <th scope="col">Books</th>
                 <th scope="col">Actions</th>
             </tr>
             <tr th:each="author : ${authors}">
                 <td th:text="${author.name}"></td>
-                <td class="d-flex justify-content-center">
+                <td>
+                    <ul th:each="book : ${author.books}">
+                        <li th:text="${book.title}"></li>
+                    </ul>
+                </td>
+                <td>
                     <form th:action="@{/authors/{id}/edit(id=${author.id})}" method="get">
                         <input type="submit" value="Edit" class="btn btn-warning" style="margin-right: 2px">
                     </form>
